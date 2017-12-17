@@ -79,8 +79,8 @@ static gpu_dvfs_info gpu_dvfs_table_default[] = {
 	{839, 850000, 0, 98, 100, 1, 0, 1794000, 400000, 1690000, CPU_MAX},
 	{764, 850000, 0, 98, 100, 1, 0, 1794000, 400000, 1690000, CPU_MAX},
 	{683, 800000, 0, 98, 100, 1, 0, 1794000, 400000, 1690000, CPU_MAX},
-	{600, 800000, 0, 78,  99, 5, 0, 1794000, 400000, 1690000, CPU_MAX},
-	{559, 800000, 0, 78,  99, 5, 0, 1794000, 400000, 1690000, 2002000},
+	{636, 800000, 0, 78,  99, 5, 0, 1794000, 400000, 1690000, 2002000},
+	{600, 800000, 0, 78,  99, 5, 0, 1794000, 400000, 1690000, 2002000},
 	{467, 800000, 0, 78,  85, 9, 0, 1540000, 400000, 1456000, 2002000},
 	{397, 800000, 0, 78,  85, 1, 0, 1352000, 400000, 1248000, CPU_MAX},
 	{350, 800000, 0, 78,  85, 1, 0, 1014000, 267000,  949000, CPU_MAX},
@@ -96,8 +96,8 @@ static int mif_min_table[] = {
 };
 
 static gpu_attribute gpu_config_attributes[] = {
-	{GPU_MAX_CLOCK, 600},
-	{GPU_MAX_CLOCK_LIMIT, 600},
+	{GPU_MAX_CLOCK, 636},
+	{GPU_MAX_CLOCK_LIMIT, 636},
 	{GPU_MIN_CLOCK, 260},
 	{GPU_DVFS_START_CLOCK, 260},
 	{GPU_DVFS_BL_CONFIG_CLOCK, 260},
@@ -121,7 +121,7 @@ static gpu_attribute gpu_config_attributes[] = {
 	{GPU_COLD_MINIMUM_VOL, 0},
 	{GPU_VOLTAGE_OFFSET_MARGIN, 37500},
 	{GPU_TMU_CONTROL, 1},
-	{GPU_TEMP_THROTTLING1, 559},
+	{GPU_TEMP_THROTTLING1, 600},
 	{GPU_TEMP_THROTTLING2, 467},
 	{GPU_TEMP_THROTTLING3, 397},
 	{GPU_TEMP_THROTTLING4, 350},
@@ -153,7 +153,7 @@ static gpu_attribute gpu_config_attributes[] = {
 	{GPU_DVFS_POLLING_TIME, 30},
 	{GPU_PMQOS_INT_DISABLE, 1},
 	{GPU_PMQOS_MIF_MAX_CLOCK, 1794000},
-	{GPU_PMQOS_MIF_MAX_CLOCK_BASE, 600},
+	{GPU_PMQOS_MIF_MAX_CLOCK_BASE, 636},
 	{GPU_CL_DVFS_START_BASE, 467},
 	{GPU_DEBUG_LEVEL, DVFS_WARNING},
 	{GPU_TRACE_LEVEL, TRACE_ALL},
@@ -488,8 +488,8 @@ int gpu_asv_calibration_start(void)
 	}
 
 	gpu_control_power_policy_set(pkbdev, "always_on");
-	gpu_dvfs_clock_lock(GPU_DVFS_MAX_LOCK, ASV_CALI_LOCK, 600);
-	gpu_dvfs_clock_lock(GPU_DVFS_MIN_LOCK, ASV_CALI_LOCK, 600);
+	gpu_dvfs_clock_lock(GPU_DVFS_MAX_LOCK, ASV_CALI_LOCK, 636);
+	gpu_dvfs_clock_lock(GPU_DVFS_MIN_LOCK, ASV_CALI_LOCK, 636);
 	gpu_pm_qos_command(platform, GPU_CONTROL_PM_QOS_RESET);
 	return 0;
 }
@@ -528,8 +528,8 @@ int gpu_asv_calibration_start_wq(void)
 
 	platform->gpu_auto_cali_status = true;
 	gpu_control_power_policy_set(pkbdev, "always_on");
-	gpu_dvfs_clock_lock(GPU_DVFS_MAX_LOCK, ASV_CALI_LOCK, 600);
-	gpu_dvfs_clock_lock(GPU_DVFS_MIN_LOCK, ASV_CALI_LOCK, 600);
+	gpu_dvfs_clock_lock(GPU_DVFS_MAX_LOCK, ASV_CALI_LOCK, 636);
+	gpu_dvfs_clock_lock(GPU_DVFS_MIN_LOCK, ASV_CALI_LOCK, 636);
 
 	if (NULL == gpu_asv_cali_wq) {
 		INIT_DELAYED_WORK(&gpu_asv_cali_stop_work, gpu_asv_calibration_stop_callback);

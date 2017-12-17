@@ -35,6 +35,7 @@
 #include <media/v4l2-subdev.h>
 #include <soc/samsung/cal-if.h>
 #include <dt-bindings/clock/exynos8895.h>
+#include <linux/lcd_notify.h>
 #ifdef CONFIG_SEC_DEBUG
 #include <linux/sec_debug.h>
 #endif
@@ -930,20 +931,24 @@ static int decon_blank(int blank_mode, struct fb_info *info)
 	switch (blank_mode) {
 	case FB_BLANK_POWERDOWN:
 	case FB_BLANK_NORMAL:
+		lcd_notifier_call_chain(LCD_EVENT_OFF_START, NULL);
 		DPU_EVENT_LOG(DPU_EVT_BLANK, &decon->sd, ktime_set(0, 0));
 		ret = decon_disable(decon);
 		if (ret) {
 			decon_err("failed to disable decon\n");
 			goto blank_exit;
 		}
+		lcd_notifier_call_chain(LCD_EVENT_OFF_END, NULL);
 		break;
 	case FB_BLANK_UNBLANK:
+		lcd_notifier_call_chain(LCD_EVENT_ON_START, NULL);
 		DPU_EVENT_LOG(DPU_EVT_UNBLANK, &decon->sd, ktime_set(0, 0));
 		ret = decon_enable(decon);
 		if (ret) {
 			decon_err("failed to enable decon\n");
 			goto blank_exit;
 		}
+		lcd_notifier_call_chain(LCD_EVENT_ON_END, NULL);
 		break;
 	case FB_BLANK_VSYNC_SUSPEND:
 	case FB_BLANK_HSYNC_SUSPEND:

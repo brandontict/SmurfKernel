@@ -9,9 +9,9 @@ ui_print() {
 }
 
 cd /tmp
-rm -rf IronKernel
-mkdir IronKernel
-cd IronKernel
+rm -rf SmurfKernel
+mkdir SmurfKernel
+cd SmurfKernel
 unzip -o "$ZIP"
 
 getprop ro.boot.bootloader >> BLmodel
@@ -23,7 +23,7 @@ mount /system
 ui_print " - mounting data partition"
 mount /data
 
-ui_print " - Installing IronKernel"
+ui_print " - Installing SmurfKernel"
 
 if grep -q G955 BLmodel; then
 	cat dream2lte-eur.img > /dev/block/platform/11120000.ufs/by-name/BOOT
@@ -60,7 +60,7 @@ rm -f /system/vendor/lib/libsecure_storage.so
 rm -f /system/vendor/lib64/libsecure_storage.so
 
 cd
-cd /tmp/IronKernel
+cd /tmp/SmurfKernel
 if grep -q G95 BLmodel; then
 	mv -f vendor/s8/firmware/fimc_is_lib.bin /system/vendor/firmware/fimc_is_lib.bin
 	mv -f vendor/s8/firmware/fimc_is_rta_2l2_3h1.bin /system/vendor/firmware/fimc_is_rta_2l2_3h1.bin
@@ -95,5 +95,5 @@ umount /system > /dev/null 2>&1
 
 ui_print " "
 ui_print "finished"
-rm -rf /tmp/IronKernel
+rm -rf /tmp/SmurfKernel
 sync
