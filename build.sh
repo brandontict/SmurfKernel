@@ -4,7 +4,7 @@
 export MODEL=greatlte
 export VARIANT=eur
 export ARCH=arm64
-export BUILD_CROSS_COMPILE=/media/pappschlumpf/2748a835-0c60-05d2-85f2-c36d45675d52/Toolchains/aarch64-cortex_a53-linux-gnueabi/bin/aarch64-cortex_a53-linux-gnueabi-
+export BUILD_CROSS_COMPILE=/media/pappschlumpf/2748a835-0c60-05d2-85f2-c36d45675d521/Toolchains/aarch64-cortex_a53-linux-gnueabi/bin/aarch64-cortex_a53-linux-gnueabi-
 export BUILD_JOB_NUMBER=`grep processor /proc/cpuinfo|wc -l`
 
 RDIR=$(pwd)

@@ -166,6 +166,12 @@ config CPU_FREQ_DEFAULT_GOV_ZZMOOVE
 		frequency lookup tables and optimized scaling triggers instead of
 		% frequency steps to get smooth up/downscaling dependant on CPU load.
 
+config CPU_FREQ_DEFAULT_GOV_TRIPNDROID
+ 	bool "tripndroid"
+ 	select CPU_FREQ_GOV_TRIPNDROID
+ 	help
+ 	  Select tripndroid cpu governor as default
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -338,6 +344,14 @@ config CPU_FREQ_GOV_ZZMOOVE
 	  % frequency steps to get smooth up/downscaling dependant on CPU load.
 
 	  if in doubt, say N.
+
+config CPU_FREQ_GOV_TRIPNDROID
+     tristate "'tripndroid' cpufreq governor"
+     depends on CPU_FREQ
+     help
+ 	  Custom cpu governor designed specificly for multi cpu mobile devices.
+ 	  Aiming at a balance between performance and battery lifetime, but it
+ 	  hangs a little bit more towards performance at low latencys.
 
 config CPU_FREQ_GOV_DARKNESS
  	tristate "'darkness' cpufreq policy governor"

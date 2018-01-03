@@ -6581,12 +6581,12 @@ samsung,tmu_sensor_type = <0x0>;
 
 
   gpu_idx_num = <7>;
-  gpu_cooling_table = < 0 0 636000
-          0 1 600000
-          0 2 467000
-          0 3 397000
-          0 4 350000
-          0 5 260000
+  gpu_cooling_table = < 0 0 572000
+          0 1 546000
+	  0 2 455000
+	  0 3 385000
+	  0 4 338000
+	  0 5 260000
           0 6 (~1)>;
 # 1 "arch/arm64/boot/dts/exynos/exynos8895-tmu-sensor-conf.dtsi" 1
 # 14 "arch/arm64/boot/dts/exynos/exynos8895-tmu-sensor-conf.dtsi"
