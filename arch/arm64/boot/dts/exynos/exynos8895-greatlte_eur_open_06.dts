@@ -2533,6 +2533,7 @@
    cal-id = <(0x0B040003)>;
    dm-type = <0>;
 
+   max-freq = <1794000>;
    min-freq = <455000>;
 
 
@@ -6730,42 +6731,42 @@ samsung,tmu_sensor_type = <0x0>;
     map0 {
          trip = <&apo_alert0>;
 
-         cooling-device = <&cpu0 0 0>;
+         cooling-device = <&cpu0 0 2>;
     };
     map1 {
          trip = <&apo_alert1>;
 
-         cooling-device = <&cpu0 0 0>;
+         cooling-device = <&cpu0 0 3>;
           };
     map2 {
          trip = <&apo_alert2>;
 
-         cooling-device = <&cpu0 0 0>;
+         cooling-device = <&cpu0 0 4>;
     };
     map3 {
          trip = <&apo_alert3>;
 
-         cooling-device = <&cpu0 0 0>;
+         cooling-device = <&cpu0 0 5>;
     };
     map4 {
          trip = <&apo_alert4>;
 
-         cooling-device = <&cpu0 0 0>;
+         cooling-device = <&cpu0 0 6>;
     };
     map5 {
          trip = <&apo_alert5>;
 
-         cooling-device = <&cpu0 0 0>;
+         cooling-device = <&cpu0 0 8>;
           };
     map6 {
          trip = <&apo_alert6>;
 
-         cooling-device = <&cpu0 0 0>;
+         cooling-device = <&cpu0 0 8>;
     };
     map7 {
          trip = <&apo_hot>;
 
-         cooling-device = <&cpu0 0 0>;
+         cooling-device = <&cpu0 0 8>;
     };
    };
   };
